@@ -1,0 +1,14 @@
+- !policy
+  id: apps/github
+  body:
+    - !group
+    - !host
+      id: "Demo-Auth-Retrieval-Workflow"
+      annotations:
+        authn-jwt/github/repository: ztwright/hackisack 
+        authn-jwt/github/ref: refs/heads/2-h2c-demo
+        authn-jwt/github/runner_environment: self-hosted
+           
+    - !grant
+      role: !group
+      member: !host "Demo-Auth-Retrieval-Workflow"
