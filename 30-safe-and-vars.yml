@@ -1,5 +1,5 @@
 - !policy
-  id: LOB/vault/hashi-jwt-safe/delegation
+  id: LOB/vault/jwtapp-safe/delegation
   body:
   - !group consumers
 
@@ -8,14 +8,14 @@
     member: !host /apps/github/Demo-Auth-Retrieval-Workflow
 
 - &vars
-  - !variable LOB/vault/hashi-jwt-safe/websvadmin/username
-  - !variable LOB/vault/hashi-jwt-safe/websvadmin/password
+  - !variable LOB/vault/jwtapp-safe/websvadmin/username
+  - !variable LOB/vault/jwtapp-safe/websvadmin/password
 
 - !permit
-  role: !group LOB/vault/hashi-jwt-safe/delegation/consumers
+  role: !group LOB/vault/jwtapp-safe/delegation/consumers
   privileges: [read, execute, update]
   resource: *vars
 
 - !grant
   role: !group conjur/authn-jwt/github/apps
-  member: !group LOB/vault/hashi-jwt-safe/delegation/consumers
+  member: !group LOB/vault/jwtapp-safe/delegation/consumers
